@@ -1,6 +1,6 @@
 {
   "name": "wordle-suggestion-generator",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Chrome Extension to provide word suggestion for Wordle",
   "main": "index.js",
   "author": "Paurav Surendra",

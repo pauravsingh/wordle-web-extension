@@ -5,22 +5,21 @@ export function getInputData(): any {
 
     // Get the HTML element with user input data
     const gameRowElements = document
-        ?.querySelector('game-app')
-        ?.shadowRoot
-        ?.getElementById('board')
-        ?.getElementsByTagName('game-row');
+        ?.getElementById('wordle-app-game')
+        ?.getElementsByTagName('div')[0]
+        ?.getElementsByTagName('div')[0].children
 
     for (const gameRowElement of gameRowElements || []) {
-        if (gameRowElement && gameRowElement.shadowRoot) {
+        if (gameRowElement) {
             // Get all the tile elements
-            const gameTileElements = gameRowElement.shadowRoot.querySelectorAll('div game-tile');
+            const gameTileElements = gameRowElement.querySelectorAll('div[data-state]');
             // Track position of each letter for each attempt
             let index = 0;
             // For each tile, get each letter with its status and position
             for (const gameTileElement of gameTileElements) {
                 if (gameTileElement) {
-                    const letter = gameTileElement.getAttribute('letter');
-                    const evaluation = gameTileElement.getAttribute('evaluation');
+                    const letter = gameTileElement.innerHTML;
+                    const evaluation = gameTileElement.getAttribute('data-state');
                     if (letter) {
                         // Add the letter information to the output
                         letters.push({
